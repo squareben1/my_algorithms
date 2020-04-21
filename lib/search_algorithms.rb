@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BinarySearch
+class SearchAlgorithms
   # sort an ordered list by cutting it in half repeatedly
   def binary_search(list, item)
     # keep track of where you are in list
