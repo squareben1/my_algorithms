@@ -1,6 +1,6 @@
 # Experiments with Algorithms
 
-Translating the algorithm examples in Aditya Bhargava's *Grokking Algorithms* from Python into Ruby to ensure I fully understand them (and familiarise myself with Python). 
+Trying out the algorithm examples in Aditya Bhargava's *Grokking Algorithms*. Translating them from Python into Ruby (and back again) to ensure I fully understand them. 
 
 [Chapter 1](#notes-on-chapter-1) | [Chapter 2](#notes-on-chapter-2) | 
 

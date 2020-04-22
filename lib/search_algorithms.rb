@@ -20,4 +20,17 @@ class SearchAlgorithms
       end
     end
   end
+
+  def find_smallest(arr)
+    smallest = arr[0]
+    smallest_index = 0
+
+    arr.each do |int|
+      if int < smallest
+        smallest = int
+        smallest_index = arr.index(int)
+      end
+    end
+    return smallest_index
+  end
 end
