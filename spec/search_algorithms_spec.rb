@@ -24,4 +24,10 @@ describe SearchAlgorithms do
       expect(subject.find_smallest(unordered_list)).to eq 3
     end
   end
+
+  describe '#selection_sort' do
+    it 'should sort from smallest to largest' do
+      expect(subject.selection_sort(unordered_list)).to eq [1, 2, 3, 4, 4, 7]
+    end
+  end
 end

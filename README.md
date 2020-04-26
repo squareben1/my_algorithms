@@ -46,6 +46,6 @@ Arrays have fast reads and slow inserts. Linked lists have slow reads and fast i
 Strange concept covered more in chapter 3...
 Sorting a list of 7 songs with play counts. To sort in order you iterate over the list 7 times to find most played, push that into new list then iterate over the remaining songs to find the next most played. Repeat until list sorted. 
 
-This is O(n<sup>2</sup>)...even though really you only check the list half that number of times on average. QUE?? It says this is because O notation ignores half numbers...
+This is O(n<sup>2</sup>)...even though really you only check the list half that number of times on average. QUE?? It says this is because O notation ignores half numbers...'constants like 1/2 are ignored in Big O notation'. 
 
 ### Quicksort Algorithm 

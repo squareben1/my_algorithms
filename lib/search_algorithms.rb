@@ -31,6 +31,15 @@ class SearchAlgorithms
         smallest_index = arr.index(int)
       end
     end
-    return smallest_index
+    smallest_index
+  end
+
+  def selection_sort(arr)
+    new_array = []
+    arr.length.times do
+      smallest = find_smallest(arr)
+      new_array.push(arr.delete_at(smallest))
+    end
+    new_array
   end
 end
