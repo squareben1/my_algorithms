@@ -22,4 +22,16 @@ class PySearchAlgorithms:
             if array[i] < smallest:
                 smallest = array[i]
                 smallest_index = i
-            return smallest_index
+        return smallest_index
+
+    def selection_sort(self, array):
+        new_arr = []
+
+        for i in range(len(array)):
+            smallest = self.find_smallest(array)
+            new_arr.append(array.pop(smallest))
+        return new_arr
+
+
+
+
