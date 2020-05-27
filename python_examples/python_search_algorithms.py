@@ -1,4 +1,5 @@
-import timeit 
+import timeit
+
 
 def binary_search(list, item):
     low = 0
@@ -13,6 +14,7 @@ def binary_search(list, item):
         else:
             low = mid + 1
 
+
 def find_smallest(array):
     smallest = array[0]
     smallest_index = 0
@@ -22,12 +24,10 @@ def find_smallest(array):
             smallest_index = i
     return smallest_index
 
+
 def selection_sort(array):
     new_arr = []
     for i in range(len(array)):
         smallest = find_smallest(array)
         new_arr.append(array.pop(smallest))
     return new_arr
-
-
-
