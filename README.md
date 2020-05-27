@@ -105,5 +105,17 @@ def countdown(i):
     countdown(i-1)
 ```
 
+### Factorial ###
 
+```factorial(5)``` is written as ```5!```, and it’s
+defined like this: ```5! = 5 * 4 * 3 * 2 * 1```.
 
+### The Stack ###
+
+Push & pop. 
+
+All function calls go on the stack.
+
+Using the example of searchign for a key in a box containing many boxes (which each potentially hold a box) you dont need to keep track of a pile of boxes, the stack does it for you. 
+
+This can be memory intensive. If you dont include a break clause it could go on forever (until the computer runs out of memory anyway). It will then exit with a stackoverflow error.  
