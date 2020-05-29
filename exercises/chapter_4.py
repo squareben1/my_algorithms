@@ -35,3 +35,47 @@ def maxNum(arr):
     return arr[0] if arr[0] > max else max
 
 print('maxNum', maxNum(numList))
+
+# 4.4 What is the base case and recursive case for binary search?
+
+# "Remember binary search from chapter 1? It’s a divide-and conquer
+# algorithm, too. Can you come up with the base case and recursive case 
+# for binary search?"
+
+def binary_search(list, item):
+    low = 0
+    high = len(list) - 1
+    while low <= high:
+        mid = (low + high) / 2
+        guess = list[mid] 
+        if guess == item: # BASE CASE
+            return mid
+        if guess > item: # here = recursive 
+            high = mid - 1
+        else:
+            low = mid + 1
+
+# So I said base case was the item == list[mid] and the recursive 
+# was splitting the array in two and repeating...
+# 
+# ANSWER: "The base case for binary search is an array with one item.
+# If the item you’re looking for matches the item in the array, you
+# found it! Otherwise, it isn’t in the array.
+# In the recursive case for binary search, you split the array in half,
+# throw away one half, and call binary search on the other half.
+
+# SO: 
+
+def recursive_binary(arr, low, high, item):
+    if high >= low: #check base case
+        mid = (low + high) // 2
+        if arr[mid] == item:
+            return mid
+        elif arr[mid] > item:
+            return recursive_binary(arr, low, mid-1, item)
+        else:
+            return recursive_binary(arr, mid+1, high, item)
+    
+print('recursive_binary', recursive_binary(numList, 0, len(numList)-1, 3))
+# should == 2
+
