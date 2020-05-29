@@ -79,12 +79,13 @@ This is O(n<sup>2</sup>)...even though really you only check the list half that 
 Recursion = when a function calls itself. 
 
 e.g. this pseudocode:
-```def look_for_key(box):
-for item in box:
-  if item.is_a_box():
-    look_for_key(item) <-- Recursion!
-  elif item.is_a_key():
-    print “found the key!”
+```
+def look_for_key(box):
+  for item in box:
+    if item.is_a_box():
+      look_for_key(item) <--Recursion!
+    elif item.is_a_key():
+      print “found the key!”
 ```
 Recursion is used when it makes the solution clearer. The above code is clearer than:
 
