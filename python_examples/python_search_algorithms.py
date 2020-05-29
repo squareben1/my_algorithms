@@ -1,5 +1,10 @@
 import timeit
 
+def linear_search(mylist, find):
+    for x in mylist:
+        if x == find:
+            return True
+    return False
 
 def binary_search(list, item):
     low = 0

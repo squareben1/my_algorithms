@@ -1,10 +1,10 @@
 # Experiments with Algorithms
 
-Trying out the algorithm examples in Aditya Bhargava's *Grokking Algorithms*. Translating them from Python into Ruby (and back again) to ensure I fully understand them. 
+Trying out the algorithm examples in Aditya Bhargava's *Grokking Algorithms*.  
 
-[Chapter 1](#notes-on-chapter-1) | [Chapter 2](#notes-on-chapter-2) | [Chapter 3](#chapter-3) | 
+[Chapter 1](#chapter-1) | [Chapter 2](#chapter-2---selection-sort) | [Chapter 3](#chapter-3---recursion) | [Chapter 4](#chapter-4---quicksort) | 
 
-## Notes on Chapter 1
+## Chapter 1
 
 ### Solidifying my Understanding of Exponentials and Intro to Logarithms
 
@@ -38,18 +38,41 @@ Binary search = have to check max log n.
 
 For list of 8, binary = O(log<sub>3</sub>) i.e. 3 guesses max. 
 
-## Notes on Chapter 2
+## Chapter 2 - Selection Sort
+
+### Arrays & Linked Lists
 
 Arrays have fast reads and slow inserts. Linked lists have slow reads and fast inserts.
 
-**Selection Sort**:
+**Arrays** = items stored next to each other in memory.
+
+ **Arrays = Slow inserts** because, like at cinema when new person coems along, you have to move the whole array to somewhere it will fit if the next memory slot is taken. 
+
+**Arrays = Fast Reads** Arrays are great if you want to read random elements, because you can look up any element in your array instantly.
+
+**Linked Lists = Slow Reads** = items stored at different places in memory with each item pointing to location of next. Like a treasure hunt. 
+
+Like a Top 10 best blah blah list where you have to click through to get to end  
+
+**Linked Lists = Fast inserts** because you can put new items anywhere and store the location with the previous item. Never have to move. 
+**Fast Deletions** too as just have to change what teh previous element points to.
+
+**Arrays = We all need to move down - there's a four over there**
+
+**Linked Lists = “Let’s split up and watch the film.”**
+
+
+
+### Selection Sort:
 Strange concept covered more in chapter 3...
 Sorting a list of 7 songs with play counts. To sort in order you iterate over the list 7 times to find most played, push that into new list then iterate over the remaining songs to find the next most played. Repeat until list sorted. 
 
-This is O(n<sup>2</sup>)...even though really you only check the list half that number of times on average. QUE?? It says this is because O notation ignores half numbers...'constants like 1/2 are ignored in Big O notation'. 
+This is O(n<sup>2</sup>)...even though really you only check the list half that number of times on average. QUE?? ANSWER: this is because O notation ignores half numbers...'constants like 1/2 are ignored in Big O notation'. 
+
+**Revisiting**: You check a list O(n) times, then check it O(n-1) times, O(n-2) times and so on. in theory therefore you actually check it O(n...and a half) times. BUT constants like 1/2 are ignored in Big O notation. 
 
 
-## Chapter 3
+## Chapter 3 - Recursion
 
 ### Recursion ### 
 
@@ -119,3 +142,61 @@ All function calls go on the stack.
 Using the example of searchign for a key in a box containing many boxes (which each potentially hold a box) you dont need to keep track of a pile of boxes, the stack does it for you. 
 
 This can be memory intensive. If you dont include a break clause it could go on forever (until the computer runs out of memory anyway). It will then exit with a stackoverflow error.  
+
+## Chapter 4 - Quicksort
+
+COME BACK TO: WHAT IS O(n log n)
+
+### Divide & Conquer
+
+1. Work out a simple base case
+
+2. Work out how to reduce the problem and get to the base case. 
+
+In the example we are dividing a farmer's plot of land. 
+
+Plot measures 1680 x 640. Start by finding the biggest square possible (the smallest side by the smallest side). 
+
+2 x 640 plots leaves 400 x 640. 
+
+Find the two biggest squares in that (400 x 400, leaves 240 x 400). 
+
+Keep doing this until you get down to 80 x 160. 80 x 2 = 160 so **base base is 80**.
+
+The biggest square plot of land possible is 80x80.
+
+**Using Recursion**
+
+Take this simple function:
+```
+def sum(arr):
+    total = 0
+    for x in arr:
+    total += x
+    return total
+print sum([1, 2, 3])
+```
+
+This can be done with recursion. Simplest case would be **one** or **zero** items in array. 
+```
+Sum([]) - 0 elements = 0
+Sum([7]) - 1 element = 7
+```
+
+Therefore this is the base case. We need to move closer to the above with each recursive call. 
+
+```
+sum([2, 4, 6])  ->  (working back up: **12**)
+
+2 + sum([4, 6])  ->  (working back up: 10 + 2)
+
+4 + sum([6])  ->  (working back up: 6 + 4)
+
+sum([6])
+```
+
+^ BASE CASE, recursion keeps track of state(stack) and works way back up. 
+
+**Tip**
+When you’re writing a recursive function involving an array, the base case is often an empty array or an array with one element. If you’re stuck, try that first.
+

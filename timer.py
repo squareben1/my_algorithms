@@ -16,7 +16,7 @@ def binary_search(mylist, find):
     return False
 
 
-# linear search function
+# linear se  arch function
 def linear_search(mylist, find):
     for x in mylist:
         if x == find:
