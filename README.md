@@ -201,3 +201,8 @@ sum([6])
 **Tip**
 When you’re writing a recursive function involving an array, the base case is often an empty array or an array with one element. If you’re stuck, try that first.
 
+*See exercises/chapter_4.py*
+
+### Quicksort
+
+continue on page60

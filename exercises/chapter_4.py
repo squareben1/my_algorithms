@@ -77,5 +77,5 @@ def recursive_binary(arr, low, high, item):
             return recursive_binary(arr, mid+1, high, item)
     
 print('recursive_binary', recursive_binary(numList, 0, len(numList)-1, 3))
-# should == 2
+# == 2
 
