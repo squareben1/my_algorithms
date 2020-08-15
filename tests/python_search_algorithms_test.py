@@ -14,7 +14,7 @@ def test_binary_search_9():
 
 
 def test_find_smallest():
-    assert find_smallest(unordered_list) == 3
+    assert find_smallest(unordered_list) == 3 # returns smallest index
 
 
 def test_selection_sort_ascending():

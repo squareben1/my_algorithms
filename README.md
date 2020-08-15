@@ -2,6 +2,9 @@
 
 Trying out the algorithm examples in Aditya Bhargava's *Grokking Algorithms*.  
 
+
+--------------
+
 [Chapter 1](#chapter-1) | [Chapter 2](#chapter-2---selection-sort) | [Chapter 3](#chapter-3---recursion) | [Chapter 4](#chapter-4---quicksort) | 
 
 ## Chapter 1
@@ -30,13 +33,47 @@ When discussing Big O notation in the book log always means log<sub>2</sub>
 
 ### Big O Notation 
 
+Big O notation lets you compare the number of operations. It tells you how fast the algorithm grows.
+
+N = input size
+
 Simple search = going through list one by one. O(n) - i.e. the max number of times you have to iterate through the list is equal to the length the list. 
 
 For list of 8 numbers, simple search = O(8)
 
 Binary search = have to check max log n. 
 
-For list of 8, binary = O(log<sub>3</sub>) i.e. 3 guesses max. 
+For list of 8, binary = O(log<sub>3</sub>) i.e. 3 guesses max (divide it 3 times)
+
+List of 1024: O(log<sub>10</sub>) i.e. in worst case have to divide it 10 times. 
+
+#### Travelling Salesperson
+
+Work out quickest journey time between 5 cities. 120 permutations. 
+
+For n items, it will take n! (n factorial) operations to
+compute the result. 
+
+So this is O(n!) time, or factorial time.
+
+There are 120 permutations with 5 cities, so it will
+take 120 operations to solve the problem for 5 cities. For 6 cities, itwill take 720 operations (there are 720 permutations). For 7 cities, it will take 5,040 operations!
+
+-------------
+
+**Factorial!**
+
+The factorial function (symbol: !) says to multiply all whole numbers from our chosen number down to 1.
+
+Examples:
+
+4! = 4 × 3 × 2 × 1 = 24
+
+7! = 7 × 6 × 5 × 4 × 3 × 2 × 1 = 5040
+
+1! = 1
+
+-------------
 
 ## Chapter 2 - Selection Sort
 
@@ -44,9 +81,17 @@ For list of 8, binary = O(log<sub>3</sub>) i.e. 3 guesses max.
 
 Arrays have fast reads and slow inserts. Linked lists have slow reads and fast inserts.
 
+|           | Arrays | Lists |
+|-----------|--------|-------|
+| Reading   | O(1)   | O(n)  |
+| Insertion | O(n)   | O(1)  |
+| Deletion  | O(n)   | O(1)  |
+
+Question: Why do arrays have deletion of O(1) - unless this means only the first or last? Fast deletion as 'just have t change what previous element points to' - how does this make sense though? Surey you need to find it before you can delete it...??
+
 **Arrays** = items stored next to each other in memory.
 
- **Arrays = Slow inserts** because, like at cinema when new person coems along, you have to move the whole array to somewhere it will fit if the next memory slot is taken. 
+ **Arrays = Slow inserts** because, like at cinema when new person comes along, you have to move the whole array to somewhere it will fit if the next memory slot is taken. 
 
 **Arrays = Fast Reads** Arrays are great if you want to read random elements, because you can look up any element in your array instantly.
 
@@ -55,12 +100,14 @@ Arrays have fast reads and slow inserts. Linked lists have slow reads and fast i
 Like a Top 10 best blah blah list where you have to click through to get to end  
 
 **Linked Lists = Fast inserts** because you can put new items anywhere and store the location with the previous item. Never have to move. 
-**Fast Deletions** too as just have to change what teh previous element points to.
+**Fast Deletions** too as just have to change what the previous element points to.
+**Question: But how do you find it to delete it in the first place?** 
 
 **Arrays = We all need to move down - there's a four over there**
 
 **Linked Lists = “Let’s split up and watch the film.”**
 
+Note: All elements in the array should be the same type (all ints, all doubles, and so on).
 
 
 ### Selection Sort:
@@ -69,7 +116,7 @@ Sorting a list of 7 songs with play counts. To sort in order you iterate over th
 
 This is O(n<sup>2</sup>)...even though really you only check the list half that number of times on average. QUE?? ANSWER: this is because O notation ignores half numbers...'constants like 1/2 are ignored in Big O notation'. 
 
-**Revisiting**: You check a list O(n) times, then check it O(n-1) times, O(n-2) times and so on. in theory therefore you actually check it O(n...and a half) times. BUT constants like 1/2 are ignored in Big O notation. 
+**Revisiting**: You check a list O(n) times, then check it O(n-1) times, O(n-2) times and so on. In theory therefore you actually check it O(n...and a half) times. BUT constants like 1/2 are ignored in Big O notation. 
 
 
 ## Chapter 3 - Recursion

@@ -23,7 +23,7 @@ def binary_search(list, item):
 def find_smallest(array):
     smallest = array[0]
     smallest_index = 0
-    for i in range(1, len(array)):
+    for i in range(len(array)):
         if array[i] < smallest:
             smallest = array[i]
             smallest_index = i
