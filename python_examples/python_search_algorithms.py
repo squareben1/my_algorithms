@@ -40,7 +40,12 @@ def selection_sort(array):
 def recursive_sum(arr):
     if len(arr) == 0:
         return 0
-    elif len(arr) == 1:
-        return arr[0]
     else: 
         return arr[0] + recursive_sum(arr[1:])
+
+def recursive_count(arr):
+    if arr == []:
+        return 0
+    else:
+        return 1 + recursive_count(arr[1:])
+        

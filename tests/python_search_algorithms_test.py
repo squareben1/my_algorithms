@@ -37,3 +37,11 @@ def test_recursive_sum_return_two_len():
 
 def test_recursive_sum_return_three_len():
     assert recursive_sum([2, 4, 6]) == 12
+
+# --- Write a recursive function to count the number of items in a list ---
+
+def test_recursive_list_count_1():
+    assert recursive_count([]) == 0
+
+def test_recursive_list_count_2():
+    assert recursive_count([1, 2]) == 2
