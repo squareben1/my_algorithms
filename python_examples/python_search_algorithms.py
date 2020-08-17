@@ -59,7 +59,7 @@ def recursive_max_num(list):
         return list[0]
     if len(list) == 2:
         return list[0] if list[0] > list[1] else list[1]
-    # else:
-    #     next_max = recursive_max_num(list[1:])
-    #     return list[0] if list[0] > next_max else next_max
+    else:
+        next_max = recursive_max_num(list[1:])
+        return list[0] if list[0] > next_max else next_max
     

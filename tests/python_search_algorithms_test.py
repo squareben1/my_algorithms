@@ -57,3 +57,6 @@ def test_recursive_max_num_1():
 
 def test_recursive_max_num_2():
     assert recursive_max_num([1, 2]) == 2
+
+def test_recursive_max_num_3():
+    assert recursive_max_num([1, 2, 3]) == 3
