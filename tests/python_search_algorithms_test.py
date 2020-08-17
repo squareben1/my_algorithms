@@ -26,3 +26,9 @@ def test_recursive_sum_return_zero():
 
 def test_recursive_sum_return_one_len():
     assert recursive_sum([7]) == 7
+
+def test_recursive_sum_return_two_len():
+    assert recursive_sum([2, 4]) == 6
+
+def test_recursive_sum_return_two_len():
+    assert recursive_sum([2, 4, 6]) == 12
