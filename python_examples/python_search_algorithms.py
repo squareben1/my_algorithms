@@ -38,4 +38,7 @@ def selection_sort(array):
     return new_arr
 
 def recursive_sum(arr):
-    return 0
+    if len(arr) == 0:
+        return 0
+    elif len(arr) == 1:
+        return arr[0]

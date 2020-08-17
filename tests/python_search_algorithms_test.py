@@ -23,3 +23,6 @@ def test_selection_sort_ascending():
 
 def test_recursive_sum_return_zero():
     assert recursive_sum([]) == 0
+
+def test_recursive_sum_return_one_len():
+    assert recursive_sum([7]) == 7
