@@ -1,10 +1,12 @@
 import timeit
 
+
 def linear_search(mylist, find):
     for x in mylist:
         if x == find:
             return True
     return False
+
 
 def binary_search(list, item):
     low = 0
@@ -20,32 +22,44 @@ def binary_search(list, item):
             low = mid + 1
 
 
-def find_smallest(array):
-    smallest = array[0]
+def find_smallest(list):
+    smallest = list[0]
     smallest_index = 0
-    for i in range(len(array)):
-        if array[i] < smallest:
-            smallest = array[i]
+    for i in range(len(list)):
+        if list[i] < smallest:
+            smallest = list[i]
             smallest_index = i
     return smallest_index
 
 
-def selection_sort(array):
-    new_arr = []
-    for i in range(len(array)):
-        smallest = find_smallest(array)
-        new_arr.append(array.pop(smallest))
-    return new_arr
+def selection_sort(list):
+    new_list = []
+    for i in range(len(list)):
+        smallest = find_smallest(list)
+        new_list.append(list.pop(smallest))
+    return new_list
 
-def recursive_sum(arr):
-    if len(arr) == 0:
-        return 0
-    else: 
-        return arr[0] + recursive_sum(arr[1:])
 
-def recursive_count(arr):
-    if arr == []:
+def recursive_sum(list):
+    if len(list) == 0:
         return 0
     else:
-        return 1 + recursive_count(arr[1:])
-        
+        return list[0] + recursive_sum(list[1:])
+
+
+def recursive_count(list):
+    if list == []:
+        return 0
+    else:
+        return 1 + recursive_count(list[1:])
+
+
+def recursive_max_num(list):
+    if len(list) == 1:
+        return list[0]
+    if len(list) == 2:
+        return list[0] if list[0] > list[1] else list[1]
+    # else:
+    #     next_max = recursive_max_num(list[1:])
+    #     return list[0] if list[0] > next_max else next_max
+    

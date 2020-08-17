@@ -40,8 +40,20 @@ def test_recursive_sum_return_three_len():
 
 # --- Write a recursive function to count the number of items in a list ---
 
+
 def test_recursive_list_count_1():
     assert recursive_count([]) == 0
 
+
 def test_recursive_list_count_2():
     assert recursive_count([1, 2]) == 2
+
+# --- Find the maximum number in a list ---
+
+
+def test_recursive_max_num_1():
+    assert recursive_max_num([1]) == 1
+
+
+def test_recursive_max_num_2():
+    assert recursive_max_num([1, 2]) == 2
