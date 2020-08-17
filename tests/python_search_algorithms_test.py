@@ -21,14 +21,19 @@ def test_selection_sort_ascending():
     assert selection_sort(unordered_list) == [1, 2, 3, 4, 4, 7]
 
 
+# ----- Recursive Sum -----
+
 def test_recursive_sum_return_zero():
     assert recursive_sum([]) == 0
+
 
 def test_recursive_sum_return_one_len():
     assert recursive_sum([7]) == 7
 
+
 def test_recursive_sum_return_two_len():
     assert recursive_sum([2, 4]) == 6
 
-def test_recursive_sum_return_two_len():
+
+def test_recursive_sum_return_three_len():
     assert recursive_sum([2, 4, 6]) == 12
