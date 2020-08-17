@@ -36,3 +36,6 @@ def selection_sort(array):
         smallest = find_smallest(array)
         new_arr.append(array.pop(smallest))
     return new_arr
+
+def recursive_sum(arr):
+    return 0

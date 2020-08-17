@@ -130,7 +130,7 @@ e.g. this pseudocode:
 def look_for_key(box):
   for item in box:
     if item.is_a_box():
-      look_for_key(item) <--Recursion!
+      look_for_key(item) # <--Recursion!
     elif item.is_a_key():
       print “found the key!”
 ```
@@ -158,8 +158,8 @@ Example of a countdown fucntion:
 
 ```
 def countdown(i):
-print i
-countdown(i-1)
+    print i
+    countdown(i-1)
 ```
 This would count down forever. 
 
@@ -187,7 +187,7 @@ Push & pop.
 
 All function calls go on the stack.
 
-Using the example of searchign for a key in a box containing many boxes (which each potentially hold a box) you dont need to keep track of a pile of boxes, the stack does it for you. 
+Using the example of searching for a key in a box containing many boxes (which each potentially hold a box) you dont need to keep track of a pile of boxes, the stack does it for you. 
 
 This can be memory intensive. If you dont include a break clause it could go on forever (until the computer runs out of memory anyway). It will then exit with a stackoverflow error.  
 

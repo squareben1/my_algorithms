@@ -14,8 +14,12 @@ def test_binary_search_9():
 
 
 def test_find_smallest():
-    assert find_smallest(unordered_list) == 3 # returns smallest index
+    assert find_smallest(unordered_list) == 3  # returns smallest index
 
 
 def test_selection_sort_ascending():
     assert selection_sort(unordered_list) == [1, 2, 3, 4, 4, 7]
+
+
+def test_recursive_sum_return_zero():
+    assert recursive_sum([]) == 0
