@@ -82,7 +82,7 @@ Examples:
 Arrays have fast reads and slow inserts. Linked lists have slow reads and fast inserts.
 
 |           | Arrays | Lists |
-|-----------|--------|-------|
+| --------- | ------ | ----- |
 | Reading   | O(1)   | O(n)  |
 | Insertion | O(n)   | O(1)  |
 | Deletion  | O(n)   | O(1)  |
@@ -123,7 +123,13 @@ This is O(n<sup>2</sup>)...even though really you only check the list half that 
 
 ### Recursion ### 
 
-Recursion = when a function calls itself. 
+Recursion = when a function calls itself.
+
+```
+“Recursion is when a function calls itself until it doesn’t.”
+
+— Mattias Petter Johansson
+```
 
 e.g. this pseudocode:
 ```
@@ -252,4 +258,26 @@ When you’re writing a recursive function involving an array, the base case is 
 
 ### Quicksort
 
-continue on page60
+```
+def quicksort(array):
+    if len(array) < 2:
+        return array
+    else:
+        pivot = array[0]
+        less = [i for i in array[1:] if i <= pivot]
+        print('less:', less)
+        greater = [i for i in array[1:] if i > pivot]
+        print('greater:', greater)
+        return quicksort(less) + [pivot] + quicksort(greater)
+
+print(quicksort([10, 5, 2, 3, 11]))
+
+less: [5, 2, 3]
+greater: [11]
+less: [2, 3]
+greater: []
+less: []
+greater: [3]
+[2, 3, 5, 10, 11]
+
+```

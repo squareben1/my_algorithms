@@ -21,7 +21,11 @@ def test_selection_sort_ascending():
     assert selection_sort(unordered_list) == [1, 2, 3, 4, 4, 7]
 
 
-# ----- Recursive Sum -----
+'''
+Exercise 4.1 - 
+Recursive Sum 
+'''
+
 
 def test_recursive_sum_return_zero():
     assert recursive_sum([]) == 0
@@ -38,7 +42,11 @@ def test_recursive_sum_return_two_len():
 def test_recursive_sum_return_three_len():
     assert recursive_sum([2, 4, 6]) == 12
 
-# --- Write a recursive function to count the number of items in a list ---
+
+'''
+Exercise 4.2 - 
+Write a recursive function to count the number of items in a list 
+'''
 
 
 def test_recursive_list_count_1():
@@ -48,7 +56,11 @@ def test_recursive_list_count_1():
 def test_recursive_list_count_2():
     assert recursive_count([1, 2]) == 2
 
-# --- Find the maximum number in a list ---
+
+'''
+Exercise 4.3 - 
+Find the maximum number in a list 
+'''
 
 
 def test_recursive_max_num_1():
@@ -58,5 +70,24 @@ def test_recursive_max_num_1():
 def test_recursive_max_num_2():
     assert recursive_max_num([1, 2]) == 2
 
+
 def test_recursive_max_num_3():
     assert recursive_max_num([1, 2, 3]) == 3
+
+'''
+    Exercise 4.4 - Base case for recursive binary search:
+    - array with 1 number in it
+    #TODO return to this
+'''
+
+def test_recursive_binary_1():
+    assert recursive_binary([1], 1) == 0
+
+def test_recursive_binary_2():
+    assert recursive_binary([1, 2], 2) == 1
+
+def test_recursive_binary_confirm():
+    assert recursive_binary(my_list, 7) == 7
+
+
+
