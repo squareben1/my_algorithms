@@ -281,3 +281,86 @@ greater: [3]
 [2, 3, 5, 10, 11]
 
 ```
+
+If you’re implementing quicksort, choose a **random** element as the
+pivot. The average runtime of quicksort is O(n log n).
+
+## Hash Tables
+
+Key Value pairs. 
+
+Looking something up in a hash table takes constant time O(1).
+
+Hash tables in Python:
+
+```
+book = dict() 
+or
+phone_book = {}
+
+book[“apple”] = 0.67
+book[“milk”] = 1.49
+book[“avocado”] = 1.49
+
+print book
+{‘avocado’: 1.49, ‘apple’: 0.67, ‘milk’: 1.49}
+```
+
+Recap:
+
+Hashes are good for...
+
+- Modeling relationships from one thing to another thing
+
+- Filtering out duplicates
+
+- Caching/memorizing data instead of making your server do work.
+
+## Hash Tables
+
+
+- **Hash tables have really fast search, insert, and delete.**
+- Hash tables are good for modeling relationships from one
+item to another item.
+- Hash tables are used for caching data (for example, with
+a web server).
+- Hash tables are great for catching duplicates.
+
+**Don't necessarily need to know:** 
+- Once your load factor is greater than .07, it’s time to resize
+your hash table.
+- You can make a hash table by combining a hash function
+with an array. 
+- Collisions are bad. You need a hash function that
+minimizes collisions. 
+
+**Great Practical Use of Hash Tables**
+
+See Chris' Explanation of NoSQL Global Secondary Index (Ruby):
+```
+users = {
+  'userId1' => {
+    'username' => 'user 1',
+    'email' => 'email 1'
+  },
+  'userId2' => {
+    'username' => 'user 2',
+    'email' => 'email 2'
+  }
+}
+
+p users['userId2']['username']
+# > "user 2"
+
+#Global Secondary Index
+usersUsernames = {
+  'user 1' => 'userId1',
+  'user 2' => 'userId2'
+}
+
+p users[usersUsernames['user 2']]
+# > {"username"=>"user 2", "email"=>"email 2"}
+```
+
+This makes use of Hash Tables' constant time to find data quickly.
+
