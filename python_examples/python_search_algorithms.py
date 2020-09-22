@@ -1,3 +1,4 @@
+from collections import deque
 import timeit
 
 
@@ -87,12 +88,12 @@ def recursive_max_num(list):
     - array with 1 number in it
 
     Tried to replicate original below (i.e. return index)...
-    #TODO return to this
+    # TODO return to this
 '''
 
 
 def recursive_binary(list, item):
-    
+
     if len(list) == 0:
         return False
     else:
@@ -103,9 +104,9 @@ def recursive_binary(list, item):
             return list.index(item)+index
         else:
             if item < list[midpoint]:
-                return recursive_binary(list[:midpoint],item)
+                return recursive_binary(list[:midpoint], item)
             else:
-                 return recursive_binary(list[midpoint:],item + midpoint)
+                return recursive_binary(list[midpoint:], item + midpoint)
     # if len(list) == 1:
     #     return list[0] if list[0] == item else False
     # else:
@@ -115,9 +116,11 @@ def recursive_binary(list, item):
     #     else:
     #         return recursive_binary(list[mid+1:], item)
 
+
 '''
 QUICKSORT
 '''
+
 
 def quicksort(array):
     if len(array) < 2:
@@ -130,4 +133,42 @@ def quicksort(array):
         print('greater:', greater)
         return quicksort(less) + [pivot] + quicksort(greater)
 
+
 print(quicksort([10, 5, 2, 3, 11]))
+
+
+'''
+    Chapter 6 - Breadth-First Search
+'''
+graph = {}
+graph["you"] = ["alice", "bob", "claire"]
+graph["bob"] = ["anuj", "peggy"]
+graph["alice"] = ["peggy"]
+graph["claire"] = ["thom", "jonny"]
+graph["anuj"] = []
+graph["peggy"] = []
+graph["thom"] = []
+graph["jonny"] = []
+
+
+def person_is_seller(name):
+    return name[-1] == 'y'
+
+
+def breadth_first_search(name):
+    search_queue = deque()
+    search_queue += graph[name]
+    searched = []
+    while search_queue:
+        person = search_queue.popleft()
+        if not person in searched:
+            if person_is_seller(person):
+                print(person + " is a mango seller!")
+                return True
+            else:
+                search_queue += graph[person]
+                searched.append(person)
+    return False
+
+
+print(breadth_first_search("you"))
