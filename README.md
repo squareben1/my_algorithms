@@ -9,7 +9,7 @@ Trying out the algorithm examples in Aditya Bhargava's *Grokking Algorithms*.
 
 ## Chapter 1
 
-### Solidifying my Understanding of Exponentials and Intro to Logarithms
+### Exponentials and Intro to Logarithms
 
 **Exponentials**: 
 
@@ -363,4 +363,174 @@ p users[usersUsernames['user 2']]
 ```
 
 This makes use of Hash Tables' constant time to find data quickly.
+
+## Chapter 6: Breadth-First Search
+
+
+### What is a Graph?
+
+Graphs are a way to model how different things are connected to one another.
+
+A graph models a set of connections, made up of nodes and edges. A node can be directly connected to many other nodes. Those nodes are called its neighbors.
+
+Graph of people who owe other people money:
+
+    
+    Alex -> Rama ---> Adit
+              ^      ^
+               \    /
+                Tom
+
+Alex owes Rama money, Tom owes Adit money, and so on. Each graph
+is made up of *nodes* and *edges*.
+
+
+    (node)
+      |
+      v
+    Alex -----> Rama
+          ^
+          |
+        (edge)
+
+### Breadth-First Search
+
+Can answer two types of questions:
+
+1. Question type 1: **Is there a path** from node A to node B? (Is there a
+mango seller in your network?)
+2. Question type 2: What is the **shortest path** from node A to node B?
+(Who is the closest mango seller?)
+
+Bread-first search finds the shortest path by working from a **queue** (FIFO - First In First Out), as opposed to a stack (LIFO - Last In First Out). 
+
+In the friend/mango seller example (where we are searching Facebook friends), we would prefer to find a seller in our first-degree connections over second, and second over third. Bread-first searches all first-degree connections before moving on to second - i.e. a QUEUE.
+
+    if first_degree_connection == mango-seller
+      return first_degree_connection
+    else
+      add_all__their_friends_to_queue()
+      (...continue searching from first_degree_connection...)
+
+Example with Route:
+
+          Node -- Finish
+         /           ^
+    Start            |
+         \           |
+           Node -- Node
+
+The shortest path has a length of 2. Bread-first search checks both nodes in first positions:
+
+    Node == Finish? 
+      Yes:
+        return
+      else:
+        check_next_node()
+
+### Implementing the Graph in Python:
+    graph = {}
+    graph["you"] = ["alice", "bob", "claire"]
+    print(graph)
+    > {'you': ['alice', 'bob', 'claire']}
+    print(graph["you"])
+    > ['alice', 'bob', 'claire']
+
+Notice that “you” is mapped to an array. So `graph[“you”]` will give you
+an array of all the neighbors of “you”.
+
+    graph = {}
+    graph["you"] = ["alice", "bob", "claire"]
+    graph["bob"] = ["anuj", "peggy"]
+    graph["alice"] = ["peggy"]
+    graph["claire"] = ["thom", "jonny"]
+    graph["anuj"] = []
+    graph["peggy"] = []
+    graph["thom"] = []
+    graph["jonny"] = []
+    
+    print(graph)
+    > {'you': ['alice', 'bob', 'claire'], 'bob': ['anuj', 'peggy'], 'alice': ['peggy'], 'claire': ['thom', 'jonny'], 'anuj': [], 'peggy': [], 'thom': [], 'jonny': []}
+
+**Directed Graph:** One way relationship; edge 2->3 means can go from 2 to 3, that edge is directed;
+
+"There is only an edge from 2 to 3 and no edge from 3 to 2. Therefore you can go from vertex 2 to vertex 3 but not from 3 to 2." - [stackoverflow](https://stackoverflow.com/questions/23956467/what-is-the-difference-between-a-directed-and-undirected-graph)
+
+    e.g. Bob is Anuj's neighbour: `graph["bob"] = ["anuj", "peggy"]`
+    but Bob is not Anuj's neighbour: `graph["anuj"] = []`
+
+**Undirected Graph:** no arrows, both nodes are each other's neighbours;
+
+"In undirected graph 2-3 means the edge has no direction, i.e. 2-3 means you can go both from 2 to 3 and 3 to 2." - (same Stackoverflow post).
+
+### Implementing the Algorithm
+
+Make a queue to start. In Python, you use the *double-ended queue*
+(**deque**) function for this:
+
+    from collections import deque
+    search_queue = deque() 
+    search_queue += graph[“you”]
+
+    while search_queue:
+        person = search_queue.popleft() #<- grabs the first person off the queue
+        if person_is_seller(person):
+            print person + “ is a mango seller!”
+            return True
+        else:
+            search_queue += graph[person] #<- add all of this person's friend's to end of search_queue
+    return False #<- noone in the queue was a mango seller
+
+NOTE: You will need to keep a record of checked_people to avoid an infinite loop (i.e. same person could be in two people's friends lists - what if the code keeps adding them then friend then them &c.)
+
+FINAL CODE:
+
+    def person_is_seller(name):
+        return name[-1] == 'y'
+
+
+    def breadth_first_search(name):
+        search_queue = deque()
+        search_queue += graph[name]
+        searched = []
+        while search_queue:
+            person = search_queue.popleft()
+            if not person in searched:
+                if person_is_seller(person):
+                    print(person + " is a mango seller!")
+                    return True
+                else:
+                    search_queue += graph[person]
+                    searched.append(person)
+        return False
+
+
+    print(breadth_first_search("you"))
+    > peggy is a mango seller!
+    > True
+
+### Running Time
+
+O(V+E) - (V for number of vertices, E for number of edges). 
+
+Breakdown in Mango seller example:
+
+Follow each edge (i.e. connection between each person) = O(number of edges). 
+
+Also keep a queue of every person to search and add to queue. Adding 1 person to queue takes constant time - O(1), so doing this for every person will take O(number of people) total.
+
+Breadth-first search therefore takes O(number of people + number of edges), and it’s more commonly written as O(V+E) (V for number of vertices, E for number of edges).
+
+**Tree:** a special type of graph, where no edges ever point back (like a family tree).
+
+### Recap
+- Breadth-first search tells you if there’s a path from A to B.
+- If there’s a path, breadth-first search will find the shortest path.
+- If you have a problem like “find the shortest X,” try modeling your problem as a graph, and use breadth-first search to solve.
+- A directed graph has arrows, and the relationship follows the direction of the arrow (rama -> adit means “rama owes adit money”).
+- Undirected graphs don’t have arrows, and the relationship goes both ways (ross - rachel means “ross dated rachel and rachel dated ross”).
+- Queues are FIFO (First In, First Out).
+- Stacks are LIFO (Last In, First Out).
+- You need to check people in the order they were added to the search list, so the search list needs to be a queue. Otherwise, you won’t get the shortest path.
+- Once you check someone, make sure you don’t check them again. Otherwise, you might end up in an infinite loop.
 
